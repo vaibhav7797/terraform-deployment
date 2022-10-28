@@ -2,13 +2,13 @@ provider "aws" {
   region = var.region
 }
 
-terraform {
-  backend "s3" {
-    bucket = "mydeployment-s3-bucket-shared-private"
-    key    = "terraform.tfstate"
-    region = "ap-south-1"
-  }
-}
+# terraform {
+#   backend "s3" {
+#     bucket = "mydeployment-s3-bucket-shared-private"
+#     key    = "terraform.tfstate"
+#     region = "ap-south-1"
+#   }
+# }
 
 module "s3_bucket" {
   source = "clouddrove/s3/aws"
