@@ -2,25 +2,14 @@ provider "aws" {
   region = var.region
 }
 
-# terraform {
-#   backend "s3" {
-#     bucket = "mydeployment-s3-bucket-shared-private"
-#     key    = "terraform.tfstate"
-#     region = "ap-south-1"
-#   }
-# }
-
-module "s3_bucket" {
-  source = "clouddrove/s3/aws"
-
-  name        = "mydeployment-s3-bucket"
-  environment = "shared"
-  attributes  = ["private"]
-  label_order = ["name", "environment"]
-
-  versioning = true
-  acl        = "private"
+terraform {
+  backend "s3" {
+    bucket = "mydeployment-s3-bucket-shared-private"
+    key    = "terraform.tfstate"
+    region = "ap-south-1"
+  }
 }
+
 
 module "vpc" {
   source  = "clouddrove/vpc/aws"
